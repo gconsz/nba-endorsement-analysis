@@ -45,3 +45,35 @@ Brand partnership managers
 Sponsorship and endorsement decision-makers
 
 ## Step 2: Prepare
+
+### Datasets
+* [Games.csv](data/raw/Games.csv)
+* [TeamStatistics.csv](data/raw/TeamStatistics.csv)
+* [TeamStatisticsAdvanced.csv](data/raw/TeamStatisticsAdvanced.csv)
+* [TeamStatisticsFourFactors.csv](data/raw/TeamStatisticsFourFactors.csv)
+
+These datasets provide both game-level and team-level statistics that allow for analysis of performance trends and efficiency metrics. I will be using these 4 datasets to upload on Google BigQuery where I will perform SQL queries are used for data cleaning, transformation, and analysis. 
+
+### Licensing
+The license on this dataset is a CC0:Public Domain. This means that the author has waived his rights. 
+
+## Step 3: Process
+
+### Tools
+
+In this section I will be using sql to:
+
+* Inspecting dataset structure and column data types
+
+* Standardizing team names across datasets
+
+* Checking for missing or duplicate values
+
+* Ensuring consistent season formats across tables
+
+* Creating cleaned tables for analysis
+
+SQL scripts used for processing are located in the [sql](sql) folder of this repository.
+
+### Data Cleaning
+
