@@ -149,6 +149,14 @@ HAVING COUNT(*) > 100;
 
 -- 32 Teams Accounted for
 
+
+
+
+
+
+
+
+
 -- Check for Distinct Teams and Seasons
 
 -- Statistics Table
@@ -197,6 +205,7 @@ SELECT
     ELSE NULL
   END AS team_clean
 FROM `smart-rope-473422-t2.NBA_ANALYSIS.statistics`;
+
 -- New table should return 30 NBA Teams
 SELECT COUNT(DISTINCT team_clean) AS cleaned_team_count
 FROM `smart-rope-473422-t2.NBA_ANALYSIS.statistics_clean`
@@ -215,6 +224,7 @@ END
 FROM `smart-rope-473422-t2.NBA_ANALYSIS.advanced_statistics`;
 -- 30 Distinct Seasons
 -- Focus on Teams from 2010-2026
+
 SELECT DISTINCT
 CASE
 WHEN EXTRACT(MONTH FROM DATE(gameDateTimeEst)) >= 10
