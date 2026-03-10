@@ -65,11 +65,13 @@ In this section I will be using sql to:
 
 * Inspecting dataset structure and column data types
 
-* Standardizing team names across datasets
+* Standardizing team names across datasets 
 
 * Checking for missing or duplicate values
 
 * Ensuring consistent season formats across tables
+
+* Removing NULLS from important columns 
 
 * Creating cleaned tables for analysis
 
