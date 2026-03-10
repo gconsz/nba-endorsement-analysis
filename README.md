@@ -76,4 +76,9 @@ In this section I will be using sql to:
 SQL scripts used for processing are located in the [sql](sql) folder of this repository.
 
 ### Data Cleaning
+The NBA datasets were cleaned and prepared to ensure they were reliable for analysis. First, the tables (games, statistics, advanced_statistics, and four_factors) were reviewed to understand their structure and total row counts. Missing values were then identified, revealing a small number of NULL values in the statistics table and 746 NULL values in orebPct within the four_factors table. These incomplete records were removed by creating cleaned tables.
+
+Next, duplicate checks were performed using key fields such as team name and game date. While the statistics and games tables contained no duplicates, duplicate groups appeared in the advanced_statistics and four_factors tables due to rows with NULL key fields. These invalid rows were removed to ensure the datasets were consistent and reliable.
+
+Team names were then standardized across all datasets to resolve historical franchise name variations (e.g., New Jersey Nets to Brooklyn Nets, Seattle SuperSonics to Oklahoma City Thunder). This normalization reduced the team count to the modern NBA structure of 30 franchises. Finally, a season_start field was created to correctly represent NBA seasons spanning two calendar years, and the data was filtered to include seasons from 2010 to 2025. After validation, each cleaned dataset contained 30 teams and consistent season coverage, resulting in a standardized dataset ready for analysis.
 
