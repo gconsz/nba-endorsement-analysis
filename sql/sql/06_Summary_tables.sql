@@ -248,6 +248,8 @@ SELECT
   COUNTIF(avg_efg_pct IS NULL) AS null_avg_efg_pct
 FROM `smart-rope-473422-t2.NBA_ANALYSIS.team_season_analysis_final`;
 
+-- Result: 0 Nulls Found
+
 
 -- =========================================
 -- 6. TEAM ENDORSEMENT POTENTIAL SUMMARY
@@ -325,16 +327,3 @@ SELECT
 FROM `smart-rope-473422-t2.NBA_ANALYSIS.team_endorsement_score`
 ORDER BY endorsement_score DESC
 LIMIT 10;
-
-
--- =========================================
--- 9. FINAL PROJECT NOTES
--- =========================================
--- Recommended execution order:
--- 1. team_season_statistics_summary
--- 2. team_season_advanced_summary
--- 3. team_season_four_factors_summary
--- 4. team_season_games_summary
--- 5. team_season_analysis_final
--- 6. team_endorsement_potential_summary
--- 7. team_endorsement_score
