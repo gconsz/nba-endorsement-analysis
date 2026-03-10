@@ -74,7 +74,7 @@ COUNTIF(tsPct IS NULL) AS null_tsPct,
 COUNTIF(efgPct IS NULL) AS null_efgPct
 FROM `smart-rope-473422-t2.NBA_ANALYSIS.advanced_statistics`;
 
--- Returned 0 in statistics table
+-- Returned 0 in advanced_statistics table
 
 -- Check NULL for four factors table
 SELECT
@@ -202,6 +202,7 @@ SELECT COUNT(DISTINCT team_clean) AS cleaned_team_count
 FROM `smart-rope-473422-t2.NBA_ANALYSIS.statistics_clean`
 WHERE team_clean IS NOT NULL;
 -- Returned 30 Teams
+
 -- Check for Distinct Seasons for statistics table
 SELECT
 COUNT(DISTINCT
@@ -244,6 +245,8 @@ END
 ) AS distinct_seasons
 FROM `smart-rope-473422-t2.NBA_ANALYSIS.advanced_statistics`;
 -- 30 Distinct Seasons
+
+
 -- games table
 SELECT
 COUNT(DISTINCT CONCAT(hometeamCity,' ',hometeamName)) AS distinct_home_teams,
@@ -251,3 +254,85 @@ COUNT(DISTINCT CONCAT(awayteamCity,' ',awayteamName)) AS distinct_away_teams
 FROM `smart-rope-473422-t2.NBA_ANALYSIS.games`;
 
 -- 63 Distinct home teams and 67 Distinct away teams
+
+-- Create cleaning home/away teams for games table: 
+CREATE OR REPLACE VIEW `smart-rope-473422-t2.NBA_ANALYSIS.games_clean` AS
+SELECT
+  *,
+  CASE
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Atlanta Hawks' THEN 'Atlanta Hawks'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Boston Celtics' THEN 'Boston Celtics'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) IN ('Brooklyn Nets','New Jersey Nets') THEN 'Brooklyn Nets'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) IN ('Charlotte Hornets','Charlotte Bobcats') THEN 'Charlotte Hornets'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Chicago Bulls' THEN 'Chicago Bulls'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Cleveland Cavaliers' THEN 'Cleveland Cavaliers'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Dallas Mavericks' THEN 'Dallas Mavericks'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Denver Nuggets' THEN 'Denver Nuggets'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Detroit Pistons' THEN 'Detroit Pistons'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Golden State Warriors' THEN 'Golden State Warriors'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Houston Rockets' THEN 'Houston Rockets'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Indiana Pacers' THEN 'Indiana Pacers'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) IN ('LA Clippers','Los Angeles Clippers') THEN 'Los Angeles Clippers'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) IN ('Los Angeles Lakers','Minneapolis Lakers') THEN 'Los Angeles Lakers'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) IN ('Memphis Grizzlies','Vancouver Grizzlies') THEN 'Memphis Grizzlies'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Miami Heat' THEN 'Miami Heat'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Milwaukee Bucks' THEN 'Milwaukee Bucks'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Minnesota Timberwolves' THEN 'Minnesota Timberwolves'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) IN ('New Orleans Pelicans','New Orleans Hornets') THEN 'New Orleans Pelicans'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'New York Knicks' THEN 'New York Knicks'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) IN ('Oklahoma City Thunder','Seattle SuperSonics') THEN 'Oklahoma City Thunder'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Orlando Magic' THEN 'Orlando Magic'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) IN ('Philadelphia 76ers','Syracuse Nationals') THEN 'Philadelphia 76ers'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Phoenix Suns' THEN 'Phoenix Suns'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Portland Trail Blazers' THEN 'Portland Trail Blazers'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) IN ('Sacramento Kings','Kansas City Kings','Cincinnati Royals','Rochester Royals') THEN 'Sacramento Kings'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'San Antonio Spurs' THEN 'San Antonio Spurs'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) = 'Toronto Raptors' THEN 'Toronto Raptors'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) IN ('Utah Jazz','New Orleans Jazz') THEN 'Utah Jazz'
+    WHEN TRIM(CONCAT(COALESCE(hometeamCity,''), ' ', COALESCE(hometeamName,''))) IN ('Washington Wizards','Washington Bullets','Capital Bullets','Baltimore Bullets','Chicago Packers','Chicago Zephyrs') THEN 'Washington Wizards'
+    ELSE NULL
+  END AS home_team_clean,
+  CASE
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Atlanta Hawks' THEN 'Atlanta Hawks'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Boston Celtics' THEN 'Boston Celtics'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) IN ('Brooklyn Nets','New Jersey Nets') THEN 'Brooklyn Nets'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) IN ('Charlotte Hornets','Charlotte Bobcats') THEN 'Charlotte Hornets'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Chicago Bulls' THEN 'Chicago Bulls'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Cleveland Cavaliers' THEN 'Cleveland Cavaliers'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Dallas Mavericks' THEN 'Dallas Mavericks'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Denver Nuggets' THEN 'Denver Nuggets'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Detroit Pistons' THEN 'Detroit Pistons'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Golden State Warriors' THEN 'Golden State Warriors'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Houston Rockets' THEN 'Houston Rockets'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Indiana Pacers' THEN 'Indiana Pacers'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) IN ('LA Clippers','Los Angeles Clippers') THEN 'Los Angeles Clippers'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) IN ('Los Angeles Lakers','Minneapolis Lakers') THEN 'Los Angeles Lakers'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) IN ('Memphis Grizzlies','Vancouver Grizzlies') THEN 'Memphis Grizzlies'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Miami Heat' THEN 'Miami Heat'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Milwaukee Bucks' THEN 'Milwaukee Bucks'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Minnesota Timberwolves' THEN 'Minnesota Timberwolves'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) IN ('New Orleans Pelicans','New Orleans Hornets') THEN 'New Orleans Pelicans'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'New York Knicks' THEN 'New York Knicks'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) IN ('Oklahoma City Thunder','Seattle SuperSonics') THEN 'Oklahoma City Thunder'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Orlando Magic' THEN 'Orlando Magic'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) IN ('Philadelphia 76ers','Syracuse Nationals') THEN 'Philadelphia 76ers'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Phoenix Suns' THEN 'Phoenix Suns'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Portland Trail Blazers' THEN 'Portland Trail Blazers'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) IN ('Sacramento Kings','Kansas City Kings','Cincinnati Royals','Rochester Royals') THEN 'Sacramento Kings'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'San Antonio Spurs' THEN 'San Antonio Spurs'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) = 'Toronto Raptors' THEN 'Toronto Raptors'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) IN ('Utah Jazz','New Orleans Jazz') THEN 'Utah Jazz'
+    WHEN TRIM(CONCAT(COALESCE(awayteamCity,''), ' ', COALESCE(awayteamName,''))) IN ('Washington Wizards','Washington Bullets','Capital Bullets','Baltimore Bullets','Chicago Packers','Chicago Zephyrs') THEN 'Washington Wizards'
+    ELSE NULL
+  END AS away_team_clean
+FROM `smart-rope-473422-t2.NBA_ANALYSIS.games`;
+
+-- This should return 30 away and 30 home teams
+-- To verify this: 
+SELECT
+  COUNT(DISTINCT home_team_clean) AS distinct_home_teams,
+  COUNT(DISTINCT away_team_clean) AS distinct_away_teams
+FROM `smart-rope-473422-t2.NBA_ANALYSIS.games_clean`
+WHERE home_team_clean IS NOT NULL
+  AND away_team_clean IS NOT NULL;
+-- returned 30 away and 30 home
