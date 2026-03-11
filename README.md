@@ -89,6 +89,7 @@ Team names were then standardized across all datasets to resolve historical fran
 ### Analysis summary
 
 In the Analyze phase, the cleaned NBA datasets were transformed into team-season summary tables to evaluate endorsement potential based on performance, efficiency, and long-term consistency. The statistics_clean table was used to calculate games played, wins, losses, win percentage, scoring averages, and point differential. The advanced_statistics_clean_view table was used to summarize offensive and defensive efficiency through offensive rating, defensive rating, net rating, true shooting percentage, and effective field goal percentage. The four_factors_clean_view table was used to measure the statistical drivers of winning, including effective field goal percentage, free throw rate, offensive rebounding percentage, turnover percentage, and opponent effective field goal percentage. The games_clean table was used as supporting analysis to capture home and away performance.
+[Summary tables](https://github.com/gconsz/nba-endorsement-analysis/tree/main/data/summary_tables) were created from the datasets that were cleaned.
 
 ### Performance Metrics
 
