@@ -75,7 +75,7 @@ In this section I will be using sql to:
 
 * Creating cleaned tables for analysis
 
-SQL scripts used for processing are located in the [sql](sql) folder of this repository.
+SQL scripts used for processing are located in the [sql](https://github.com/gconsz/nba-endorsement-analysis/tree/main/sql/sql) folder of this repository.
 
 ### Data Cleaning
 The NBA datasets were cleaned and prepared to ensure they were reliable for analysis. First, the tables (games, statistics, advanced_statistics, and four_factors) were reviewed to understand their structure and total row counts. Missing values were then identified, revealing a small number of NULL values in the statistics table and 746 NULL values in orebPct within the four_factors table. These incomplete records were removed by creating cleaned tables.
