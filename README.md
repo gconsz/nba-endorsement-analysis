@@ -150,7 +150,7 @@ This scoring model helps identify teams that consistently combine strong on-cour
 
 All summaries were filtered to seasons 2010 through 2025 and the requested month window of October–December and January–June. After the individual summaries were created, they were combined into a final team-season analysis table keyed by team_clean and season_start. This final table was then aggregated into an endorsement potential summary and a final endorsement score. The endorsement score provides a business-focused ranking of teams by combining performance, efficiency, and stability, making it easier to identify the franchises with the strongest endorsement potential for sports marketing agencies, sponsorship managers, and brand partnership teams.
 
-The results were visualized in Tableau to highlight key performance insights.
+The results were visualized in [Tableau](https://public.tableau.com/app/profile/graeme.siazon.consolacion/viz/NBATeamPerformanceEndorsementPotentialAnalysis/Analyzingteamefficiencywinningperformanceandendorsementpotential_) to highlight key performance insights.
 
 ### Dashboard Overview
 
