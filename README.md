@@ -10,7 +10,7 @@ The dataset is made by Eoin A Moore and is made available on [Kaggle](https://ww
 #### [Prepare](#step-2-prepare)
 ####  [Process](#step-3-process)
 ####  [Analyze](#step-4-analyze)
-####  [Share](#step-5-share)
+####  [Visualization](#step-5-visualization)
 ####  [Act](#step-6-act)
 
 ## Introduction
@@ -90,4 +90,62 @@ Team names were then standardized across all datasets to resolve historical fran
 
 In the Analyze phase, the cleaned NBA datasets were transformed into team-season summary tables to evaluate endorsement potential based on performance, efficiency, and long-term consistency. The statistics_clean table was used to calculate games played, wins, losses, win percentage, scoring averages, and point differential. The advanced_statistics_clean_view table was used to summarize offensive and defensive efficiency through offensive rating, defensive rating, net rating, true shooting percentage, and effective field goal percentage. The four_factors_clean_view table was used to measure the statistical drivers of winning, including effective field goal percentage, free throw rate, offensive rebounding percentage, turnover percentage, and opponent effective field goal percentage. The games_clean table was used as supporting analysis to capture home and away performance.
 
+### Performance Metrics
+
+#### From the statistics dataset:
+
+* Wins
+
+* Losses
+
+* Win Percentage
+
+* Average Points Scored
+
+* Average Points Allowed
+
+* Point Differential
+
+* Efficiency Metrics
+
+#### From the advanced_statistics dataset:
+
+* Offensive Rating
+
+* Defensive Rating
+
+* Net Rating
+
+* True Shooting Percentage
+
+* Effective Field Goal Percentage
+
+#### From the four_factors dataset:
+
+* Effective Field Goal %
+
+* Free Throw Rate
+
+* Offensive Rebound %
+
+* Turnover %
+
+These metrics were aggregated into a team-season analysis table, which was then used to calculate a composite endorsement score for each NBA franchise.
+
+#### The endorsement score combines:
+
+* Winning performance
+
+* Efficiency metrics
+
+* Shooting effectiveness
+
+* Turnover control
+
+This scoring model helps identify teams that consistently combine strong on-court performance with efficient play, making them attractive for sponsorship opportunities.
+
+## Step 5: Visualization
+
+
 All summaries were filtered to seasons 2010 through 2025 and the requested month window of October–December and January–June. After the individual summaries were created, they were combined into a final team-season analysis table keyed by team_clean and season_start. This final table was then aggregated into an endorsement potential summary and a final endorsement score. The endorsement score provides a business-focused ranking of teams by combining performance, efficiency, and stability, making it easier to identify the franchises with the strongest endorsement potential for sports marketing agencies, sponsorship managers, and brand partnership teams.
+
