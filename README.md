@@ -149,3 +149,58 @@ This scoring model helps identify teams that consistently combine strong on-cour
 
 All summaries were filtered to seasons 2010 through 2025 and the requested month window of October–December and January–June. After the individual summaries were created, they were combined into a final team-season analysis table keyed by team_clean and season_start. This final table was then aggregated into an endorsement potential summary and a final endorsement score. The endorsement score provides a business-focused ranking of teams by combining performance, efficiency, and stability, making it easier to identify the franchises with the strongest endorsement potential for sports marketing agencies, sponsorship managers, and brand partnership teams.
 
+The results were visualized in Tableau to highlight key performance insights.
+
+### Dashboard Overview
+
+The dashboard titled "Analyzing Team Efficiency, Winning Performance, and Endorsement Potential" contains four main visualizations.
+
+#### 1. NBA Teams Ranked by Endorsement Score
+
+This bar chart ranks NBA teams based on the calculated endorsement score.
+Teams with the highest scores combine strong winning performance and efficiency metrics.
+
+#### 2. Win Percentage Trends (2010–2025)
+
+This line chart shows long-term win percentage trends for top endorsement teams.
+It highlights teams with consistent performance over multiple seasons.
+
+#### 3. Net Rating vs Average Win Percentage
+
+This scatter plot shows the relationship between team efficiency (net rating) and winning success.
+
+Teams in the upper-right quadrant demonstrate both strong performance and strong efficiency.
+
+#### 4. Shooting Efficiency vs Team Success
+
+This chart compares effective field goal percentage with win percentage.
+
+It highlights teams that achieve success through efficient scoring.
+
+<img width="1470" height="956" alt="dashboard" src="https://github.com/user-attachments/assets/f9c6da49-5a3b-4d37-b2c8-3cc64ef6aba0" />
+
+### Key Insights
+
+Boston Celtics
+
+The Boston Celtics achieved the highest endorsement score in the analysis. Their strong net rating, efficient shooting metrics, and consistently high win percentage across multiple seasons demonstrate both competitive strength and long-term stability. This sustained performance increases the team's visibility and marketability, making them an ideal partner for brands seeking long-term sponsorship relationships. The Celtics’ strong historical brand presence combined with recent competitive success provides opportunities for both national and global marketing campaigns.
+
+Golden State Warriors
+
+The Golden State Warriors rank just behind the Celtics in endorsement potential. Their strong offensive efficiency, elite shooting metrics, and consistent success over the analyzed period contribute significantly to their high endorsement score. The Warriors’ dynamic style of play and strong performance trends make them highly attractive for brands seeking high-visibility partnerships. Their ability to combine entertainment value with winning performance enhances their appeal for major sponsorship activations and promotional campaigns.
+
+## Step 6: Act
+
+Sports marketing agencies should prioritize partnerships with teams that demonstrate a combination of:
+
+* High win percentage
+
+* Strong offensive and defensive efficiency
+
+* Positive net rating
+
+* Consistent performance trends over multiple seasons
+
+Teams that rank highly across these metrics are more likely to maintain strong media exposure, fan engagement, and long-term brand relevance.
+
+Brands seeking stable endorsement value should focus on franchises that consistently appear in the upper-right quadrant of efficiency and performance visualizations, as these teams combine both competitive success and statistical efficiency. The Boston Celtics and Golden State Warriors exemplify these characteristics and therefore represent the strongest endorsement opportunities identified in this analysis.
